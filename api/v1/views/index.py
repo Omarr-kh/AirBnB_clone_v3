@@ -15,10 +15,10 @@ def status_check():
 def get_stats():
     """ returns count of all classes' objects """
     return jsonify({
-        "amenities": storage.count("amenities"),
-        "cities": storage.count("cities"),
-        "places": storage.count("places"),
-        "reviews": storage.count("reviews"),
-        "states": storage.count("states"),
-        "users": storage.count("users")
+        "amenities": storage.count("Amenities"),
+        "cities": storage.count("Cities"),
+        "places": storage.count("Places"),
+        "reviews": storage.count("Reviews"),
+        "states": storage.count("States"),
+        "users": storage.count("Users")
     })
