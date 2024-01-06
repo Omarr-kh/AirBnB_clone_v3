@@ -41,7 +41,7 @@ class FileStorage:
             self.__objects[key] = obj
 
     def save(self):
-        "" saves objects """
+        """ saves objects """
         json_objects = {}
         for key in self.__objects:
             json_objects[key] = self.__objects[key].to_dict()
