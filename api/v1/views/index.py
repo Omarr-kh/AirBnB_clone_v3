@@ -14,11 +14,11 @@ def status_check():
 @app_views.route("/stats", strict_slashes=False)
 def get_stats():
     """ returns count of all classes' objects """
-    return {
+    return jsonify({
         "amenities": storage.count("amenities"),
         "cities": storage.count("cities"),
         "places": storage.count("places"),
         "reviews": storage.count("reviews"),
         "states": storage.count("states"),
         "users": storage.count("users")
-    }
+    })
