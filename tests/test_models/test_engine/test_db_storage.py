@@ -28,7 +28,7 @@ class TestDBStorageDocs(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """ Set up """
-        cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfuncttion)
+        cls.dbs_f = inspect.getmembers(DBStorage, inspect.isfunction)
 
     def test_pep8(self):
         """ Test for PEP8."""
