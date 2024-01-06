@@ -52,10 +52,10 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as f:
-                data = json.load(f)
-            for key in data:
-                self.__objects[key] = classes[data[key]["__class__"]](**data[key])
-        except:
+                da = json.load(f)
+            for key in da:
+                self.__objects[key] = classes[da[key]["__class__"]](**da[key])
+        except Exception:
             pass
 
     def get(self, cls, id):
