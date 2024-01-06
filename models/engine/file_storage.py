@@ -41,7 +41,7 @@ class FileStorage:
             self.__objects[key] = obj
 
     def save(self):
-        """serializes __objects to the JSON file (path: __file_path)"""
+        "" saves objects """
         json_objects = {}
         for key in self.__objects:
             json_objects[key] = self.__objects[key].to_dict()
@@ -52,17 +52,17 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as f:
-                jo = json.load(f)
-            for key in jo:
-                self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
+                data = json.load(f)
+            for key in data:
+                self.__objects[key] = classes[data[key]["__class__"]](**data[key])
         except:
             pass
 
     def get(self, cls, id):
-        """gets an object based on the input id"""
+        """ gets an object by id """
         from models import storage
-        res = self.all()
-        for item in res.values():
+        result = self.all(cls)
+        for item in result.values():
             if item.id == id:
                 return item
         return None
@@ -70,25 +70,24 @@ class FileStorage:
     def count(self, cls=None):
         """returns count of object in the storage"""
         from models import storage
-        idx = 0
+        total = 0
 
         if cls:
-            objects_data = storage.all(cls).values()
+            all_data = storage.all(cls).values()
         else:
-            objects_data = storage.all().values()
+            all_data = storage.all().values()
 
-        for _ in objects_data:
-            idx += 1
-
-        return idx
+        for _ in all_data:
+            total += 1
+        return total
 
     def delete(self, obj=None):
-        """delete obj from __objects if it’s inside"""
+        """ delete obj from objects """
         if obj is not None:
             key = obj.__class__.__name__ + '.' + obj.id
             if key in self.__objects:
                 del self.__objects[key]
 
     def close(self):
-        """call reload() method for deserializing the JSON file to objects"""
+        """ call reload() method for deserializing the JSON file to objects """
         self.reload()
