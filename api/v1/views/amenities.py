@@ -7,7 +7,7 @@ Module for handling HTTP requests related to Amenity objects
 from api.v1.views import app_views
 from models import storage
 from models.amenity import Amenity
-from flask import abort, jsonify, make_amen_jsonponse, request
+from flask import abort, jsonify, make_response, request
 
 
 @app_views.route("/amenities", methods=['GET'], strict_slashes=False)
