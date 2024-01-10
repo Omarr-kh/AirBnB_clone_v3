@@ -142,7 +142,7 @@ def places_search():
         if not place_arr:
             place_arr = storage.all(Place).values()
         amen = [storage.get(Amenity, amenity_id)
-                 for amenity_id in req_amenities]
+                for amenity_id in req_amenities]
         place_arr = [place for place in place_arr
                      if all([idx in place.amenities
                             for idx in amen])]
